@@ -1,7 +1,17 @@
+import { useState } from "react";
 import "./App.css";
+import AgeResult from "./components/AgeResult";
 
 const App = () => {
-  return <div className="m-4 mx-3 p-5 px-6 leading-3 md:text-xl">App</div>;
+  const [calculatedAge, setCalculatedAge] = useState<Age | null>(null);
+
+  return (
+    <div className="bg-off-white flex min-h-screen items-center justify-center px-5 py-16">
+      <div className="w-full max-w-[840px] rounded-[20px] rounded-br-[150px] bg-white p-[60px]">
+        <AgeResult age={calculatedAge} />
+      </div>
+    </div>
+  );
 };
 
 export default App;
