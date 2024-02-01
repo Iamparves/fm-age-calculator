@@ -27,10 +27,10 @@ const DateOfBirthForm: React.FC<DateOfBirthFormProps> = ({
   };
 
   return (
-    <div className="border-off-white relative mb-[60px] border-b-2 pb-12">
+    <div className="border-off-white relative mb-[60px] border-b-2 pb-14 sm:pb-16 lg:pb-12">
       <form
         onSubmit={handleSubmit}
-        className="grid grid-cols-[repeat(3,minmax(80px,160px))] gap-9"
+        className="grid grid-cols-[repeat(3,minmax(80px,160px))] gap-4 sm:gap-9"
       >
         <InputField
           label="day"
@@ -53,7 +53,7 @@ const DateOfBirthForm: React.FC<DateOfBirthFormProps> = ({
           setValue={setYear}
           errors={errors}
         />
-        <button className="bg-purple absolute bottom-0 right-0 flex size-24 translate-y-1/2 items-center justify-center rounded-full">
+        <button className="bg-purple hover:bg-off-black absolute bottom-0 right-1/2 flex size-16 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full duration-300 active:scale-95 active:duration-100 sm:size-20 md:right-0 md:size-24 md:translate-x-0">
           <img src="/icon-arrow.svg" alt="icon-arrow" />
         </button>
       </form>
