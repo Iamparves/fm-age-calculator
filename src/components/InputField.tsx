@@ -31,7 +31,6 @@ const InputField: React.FC<InputFieldProps> = ({
       <input
         type="number"
         placeholder={placeholder}
-        min={0}
         value={value || ""}
         className={twMerge(
           "border-light-grey text-off-black placeholder:text-smokey-grey/80 focus:border-purple rounded-lg border px-4 py-3 text-xl font-bold outline-none duration-300 [appearance:textfield] sm:px-6 sm:text-[32px] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
