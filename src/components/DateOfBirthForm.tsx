@@ -53,7 +53,7 @@ const DateOfBirthForm: React.FC<DateOfBirthFormProps> = ({
           setValue={setYear}
           errors={errors}
         />
-        <button className="bg-purple hover:bg-off-black absolute bottom-0 right-1/2 flex size-16 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full duration-300 active:scale-95 active:duration-100 sm:size-20 md:right-0 md:size-24 md:translate-x-0">
+        <button className="bg-purple md:hover:bg-off-black absolute bottom-0 right-1/2 flex size-16 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full duration-300 active:scale-95 active:duration-100 sm:size-20 md:right-0 md:size-24 md:translate-x-0">
           <img src="/icon-arrow.svg" alt="icon-arrow" />
         </button>
       </form>
