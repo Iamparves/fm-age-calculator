@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div className="bg-off-white flex min-h-screen items-center justify-center px-5 py-16">
-      <div className="w-full max-w-[840px] rounded-[20px] rounded-br-[150px] bg-white p-[60px]">
+      <div className="w-full max-w-[840px] rounded-[20px] rounded-br-[180px] bg-white p-[60px]">
         <DateOfBirthForm setCalculatedAge={setCalculatedAge} />
         <AgeResult age={calculatedAge} />
       </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { dateValidator } from "../utils/validator";
 import InputField from "./InputField";
 
 interface DateOfBirthFormProps {
@@ -6,39 +7,45 @@ interface DateOfBirthFormProps {
 }
 
 const DateOfBirthForm: React.FC<DateOfBirthFormProps> = () => {
-  const [day, setDay] = useState<InputType>({
-    value: null,
-    error: "",
-  });
-  const [month, setMonth] = useState<InputType>({
-    value: null,
-    error: "",
-  });
-  const [year, setYear] = useState<InputType>({
-    value: null,
-    error: "",
-  });
+  const [day, setDay] = useState<number | null>(null);
+  const [month, setMonth] = useState<number | null>(null);
+  const [year, setYear] = useState<number | null>(null);
+  const [errors, setErrors] = useState<ErrorType>({});
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const isValid = dateValidator({ day, month, year, errors, setErrors });
+
+    if (!isValid) return;
+  };
 
   return (
     <div className="border-off-white relative mb-[60px] border-b-2 pb-12">
-      <form className="grid grid-cols-[repeat(3,minmax(80px,160px))] gap-9">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-[repeat(3,minmax(80px,160px))] gap-9"
+      >
         <InputField
           label="day"
           placeholder="DD"
-          field={day}
-          onChangeValue={setDay}
+          value={day}
+          setValue={setDay}
+          errors={errors}
         />
         <InputField
           label="month"
           placeholder="MM"
-          field={month}
-          onChangeValue={setMonth}
+          value={month}
+          setValue={setMonth}
+          errors={errors}
         />
         <InputField
           label="year"
           placeholder="YYYY"
-          field={year}
-          onChangeValue={setYear}
+          value={year}
+          setValue={setYear}
+          errors={errors}
         />
         <button className="bg-purple absolute bottom-0 right-0 flex size-24 translate-y-1/2 items-center justify-center rounded-full">
           <img src="/icon-arrow.svg" alt="icon-arrow" />

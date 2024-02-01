@@ -1,25 +1,27 @@
 import { twMerge } from "tailwind-merge";
 
 interface InputFieldProps {
-  label: string;
+  label: LabelType;
   placeholder: string;
-  field: InputType;
-  onChangeValue: (value: InputType) => void;
+  value: number | null;
+  setValue: (value: number | null) => void;
+  errors: ErrorType;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
   label,
   placeholder,
-  field,
-  onChangeValue,
+  value,
+  setValue,
+  errors,
 }) => {
-  const { value, error } = field;
+  const error: string = errors[label] || "";
 
   return (
     <div className="flex flex-col gap-2">
       <label
         className={twMerge(
-          "text-smokey-grey text-sm font-bold uppercase tracking-[3px]",
+          "text-smokey-grey text-sm font-bold uppercase tracking-[3px] duration-300",
           error && "text-light-red",
         )}
         htmlFor={label}
@@ -36,10 +38,17 @@ const InputField: React.FC<InputFieldProps> = ({
           error && "border-light-red",
         )}
         onChange={(e) =>
-          onChangeValue({ error, value: e.target.valueAsNumber })
+          setValue(e.target.value ? Number(e.target.value) : null)
         }
       />
-      {error && <p className="text-light-red text-sm italic">{error}</p>}
+      <div
+        className={twMerge(
+          "grid grid-rows-[0fr] transition-[grid-template-rows] duration-300",
+          error && "grid-rows-[1fr]",
+        )}
+      >
+        <p className="text-light-red overflow-hidden text-sm italic">{error}</p>
+      </div>
     </div>
   );
 };

@@ -1,12 +1,15 @@
 /// <reference types="vite/client" />
 
+type LabelType = "day" | "month" | "year";
+
 interface Age {
   years: number;
   months: number;
   days: number;
 }
 
-interface InputType {
-  value: number | null;
-  error: string;
+interface ErrorType {
+  day?: string;
+  month?: string;
+  year?: string;
 }
