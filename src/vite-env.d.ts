@@ -5,3 +5,8 @@ interface Age {
   months: number;
   days: number;
 }
+
+interface InputType {
+  value: number | null;
+  error: string;
+}
