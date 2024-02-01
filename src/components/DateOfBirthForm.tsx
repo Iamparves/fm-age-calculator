@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { calculateAge } from "../utils/calculateAge";
 import { dateValidator } from "../utils/validator";
 import InputField from "./InputField";
 
@@ -6,7 +7,9 @@ interface DateOfBirthFormProps {
   setCalculatedAge: (age: Age) => void;
 }
 
-const DateOfBirthForm: React.FC<DateOfBirthFormProps> = () => {
+const DateOfBirthForm: React.FC<DateOfBirthFormProps> = ({
+  setCalculatedAge,
+}) => {
   const [day, setDay] = useState<number | null>(null);
   const [month, setMonth] = useState<number | null>(null);
   const [year, setYear] = useState<number | null>(null);
@@ -16,8 +19,11 @@ const DateOfBirthForm: React.FC<DateOfBirthFormProps> = () => {
     e.preventDefault();
 
     const isValid = dateValidator({ day, month, year, errors, setErrors });
-
     if (!isValid) return;
+
+    const age = calculateAge({ day: day!, month: month!, year: year! });
+
+    setCalculatedAge(age);
   };
 
   return (
