@@ -43,6 +43,8 @@ export const dateValidator = ({
 
   if (year === null) {
     newErrors.year = "Year is required";
+  } else if (year < 1900) {
+    newErrors.year = "Birth year must be greater than 1900";
   } else if (
     year > currentYear ||
     (year === currentYear &&
